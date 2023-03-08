@@ -1,0 +1,56 @@
+#include <graphics.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+
+   int gdriver = DETECT, gmode, errorcode;
+   int xmax, ymax, midx, midy, q1midx, q1midy, q2midx, q2midy, q3midx, q3midy, q4midx, q4midy;
+   initgraph(&gdriver, &gmode, "c:\\turboc3\\bgi");
+
+   xmax = getmaxx();
+   ymax = getmaxy();
+   midx = xmax / 2;
+   midy = ymax / 2;
+   q2midx = midx / 2;
+   q2midy = midy / 2;
+   q1midx = (midx + xmax) / 2;
+   q1midy = q2midy;
+   q3midx = q2midx;
+   q3midy = (midy + ymax) / 2;
+   q4midx = q1midx;
+   q4midy = q3midy;
+
+   line(midx,0,midx,ymax);
+   line(0,midy,xmax,midy);
+   line(0,0,0,ymax);
+   line(0,0,xmax,0);
+   line(xmax,0,xmax,ymax);
+   line(0,ymax,xmax,ymax);
+
+   //Circle
+   circle(q1midx, q1midy, 80);
+
+   //Rectangle
+   line((q2midx - 100),(q2midy + 50),(q2midx + 100),(q2midy + 50));
+   line((q2midx - 100),(q2midy - 50),(q2midx + 100),(q2midy - 50));
+   line((q2midx - 100),(q2midy - 50),(q2midx - 100),(q2midy + 50));
+   line((q2midx + 100),(q2midy - 50),(q2midx + 100),(q2midy + 50));
+
+   //Ellipse
+   ellipse(q3midx,q4midy,0,360,100,50);
+
+   //Half-Ellipse
+   ellipse(q4midx,q3midy,0,180,100,50);
+
+   outtextxy((q1midx - 20),(q1midy + 100),"Circle");
+   outtextxy((q2midx - 20),(q2midy + 100),"Rectangle");
+   outtextxy((q3midx - 20),(q3midy + 100),"Ellipse");
+   outtextxy((q4midx - 20),(q4midy + 100),"Half-Ellipse");
+   /* clean up */
+   getch();
+   closegraph();
+   return 0;
+}

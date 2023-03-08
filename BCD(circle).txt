@@ -1,0 +1,51 @@
+#include <iostream.h>
+#include <graphics.h>
+#include <conio.h>
+
+void plot(int h, int k, int x, int y)
+{
+	putpixel(h+x, k+y, 15);
+	putpixel(h-x, k+y, 15);
+	putpixel(h+x, k-y, 15);
+	putpixel(h-x, k-y, 15);
+	putpixel(h+y, k+x, 15);
+	putpixel(h-y, k+x, 15);
+	putpixel(h+y, k-x, 15);
+	putpixel(h-y, k-x, 15);
+}
+
+void main()
+{
+   int gd = DETECT, gm, errorcode;
+   int x,y,d,r,h,k;
+   initgraph(&gd, &gm, "c:\\turboc3\\bgi");
+
+   cout<<"Enter the radius : ";
+   cin>>r;
+   cout<<"Enter the Co-ordinate : ";
+   cin>>h>>k;
+
+   x = 0;
+   y = r;
+
+   d = 3 - (2*r);
+
+   while(x <= y)
+   {
+	plot(h,k,x,y);
+	if(d < 0)
+	{
+		d = d + (4 * x) + 6;
+	}
+	else
+	{
+		d = d + 4 * (x - y) + 10;
+		y = y - 1;
+	}
+	x = x + 1;
+   }
+
+
+   getch();
+   closegraph();
+}

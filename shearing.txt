@@ -1,0 +1,86 @@
+#include <iostream.h>
+#include <graphics.h>
+#include <conio.h>
+#include <math.h>
+void main()
+{
+   int gd = DETECT, gm, errorcode;
+   int s;
+   initgraph(&gd, &gm, "c:\\turboc3\\bgi");
+
+   cout<<"1.Shearing With 'x' axis\n2.Shearing With 'y' axis\n3.Shearing With 'xy' axis "<<endl;
+   cout<<"Selection : ";
+   cin>>s;
+   switch(s)
+	{
+	case 1:
+		{
+		int x1=100, y1=100, x2=200, y2=100, x3=200, y3=200, x4=100, y4=200, shx;
+		cout<<"Enter 'x' direction of Shear : ";
+		cin>>shx;
+		line(x1,y1,x2,y2);
+		line(x2,y2,x3,y3);
+		line(x3,y3,x4,y4);
+		line(x4,y4,x1,y1);
+		x1=x1+shx*(y1);
+		x2=x2+shx*(y2);
+		setcolor(3);
+		line(x1,y1,x2,y2);
+		line(x2,y2,x3,y3);
+		line(x3,y3,x4,y4);
+		line(x4,y4,x1,y1);
+		getch();
+		break;
+		}
+	case 2:
+		{
+		int x1=100, y1=100, x2=200, y2=100, x3=200, y3=200, x4=100, y4=200, shy;
+		cout<<"Enter 'y' direction of Shear : ";
+		cin>>shy;
+		line(x1,y1,x2,y2);
+		line(x2,y2,x3,y3);
+		line(x3,y3,x4,y4);
+		line(x4,y4,x1,y1);
+		y2=y2-shy;
+		y3=y3-shy;
+		setcolor(3);
+		line(x1,y1,x2,y2);
+		line(x2,y2,x3,y3);
+		line(x3,y3,x4,y4);
+		line(x4,y4,x1,y1);
+
+		getch();
+		break;
+		}
+	case 3:
+		{
+		int x1=100, y1=100, x2=200, y2=100, x3=200, y3=200, x4=100, y4=200, shx,shy;
+		cout<<"Enter 'x' direction of Shear : ";
+		cin>>shx;
+		cout<<"Enter 'y' direction of Shear : ";
+		cin>>shy;
+		line(x1,y1,x2,y2);
+		line(x2,y2,x3,y3);
+		line(x3,y3,x4,y4);
+		line(x4,y4,x1,y1);
+		x1=x1+shx*(y1);
+		x2=x2+shx*(y2);
+		y2=y2-shy;
+		y4=y4-shy;
+		setcolor(3);
+		line(x1,y1,x2,y2);
+		line(x2,y2,x3,y3);
+		line(x3,y3,x4,y4);
+		line(x4,y4,x1,y1);
+
+		getch();
+		}
+		default:
+			{
+				cout<<"Invalid selection.";
+				break;
+			}
+	}
+
+   closegraph();
+}

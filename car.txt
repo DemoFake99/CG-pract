@@ -1,0 +1,56 @@
+
+#include <graphics.h>
+#include <conio.h>
+#include <dos.h>
+
+void ddelay(int n){
+	for(int i = 0; i < n;i ++)
+		for(int j = 0; j < n; j++);
+}
+
+void drawCar(int y){
+	int i = 1;
+	while(!kbhit()){
+		circle(50+i, y-10,10); //back-wheel
+		circle(120+i, y-10,10); //front-wheel
+		
+		line(50+10+i, y-10, 110+i, y-10); //wheel-joint
+		
+		line(50-10+i, y-10,50-30+i, y-10); //back-bottom
+		line(50-30+i, y-10, 50-30+i, y-40); //back-back
+		line(50-30+i,y-40,50+i, y-40); //back-top
+		
+		line(50+i, y -40, 50+i, y-80); //top-back
+		line(50+i,y-80,110 + i, y -80); //top-top
+		line(110 + i, y-80,110 + i, y-40); //top-front
+		
+		line(110+i, y-40, 150 + i,  y - 40); //front-top
+		line(150+i, y-40, 150+i, y-10); //front-front
+		line(130+i, y-10, 150+i, y - 10); //front-bottom
+		
+		i++;
+		ddelay(2000);
+		
+		cleardevice();
+		
+		line(0,getmaxy()/2, getmaxx(),getmaxy()/2);
+		if(i >= getmaxx()) drawCar(getmaxy()/2);
+	}
+}
+
+int main()
+{
+   
+   int gd = DETECT, gm, errorcode;
+   int x,y,M,r,h,k;
+   initgraph(&gd, &gm, "c:\\turboc3\\bgi");
+   
+   
+   drawCar(getmaxy()/2);
+   
+   
+   
+   getch();
+   closegraph();
+   return 0;
+}

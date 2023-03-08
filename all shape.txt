@@ -1,0 +1,57 @@
+#include <graphics.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <conio.h>
+
+int main(void)
+{
+   int gd = DETECT, gm;
+   initgraph(&gd, &gm, "c:\\turboc3\\bgi");
+
+   //square
+   line(10,10,100,10);
+   line(100,10,100,100);
+   line(100,100,10,100);
+   line(10,100,10,10);
+   //rectangle
+   rectangle(150,10,350,100);
+   //triangle
+   line(500,10,600,100);
+   line(600,100,400,100);
+   line(400,100,500,10);
+   //diamond
+   line(55,150,100,200);
+   line(100,200,55,250);
+   line(55,250,10,200);
+   line(10,200,55,150);
+   //pentagon
+   line(225,150,300,200);
+   line(300,200,275,250);
+   line(275,250,175,250);
+   line(175,250,150,200);
+   line(150,200,225,150);
+   //hexagon
+   line(400,150,450,175);
+   line(450,175,450,225);
+   line(450,225,400,250);
+   line(400,250,350,225);
+   line(350,225,350,175);
+   line(350,175,400,150);
+   //circle
+   circle(550,200,40);
+   //ellipse
+   ellipse(100,350,0,360,80,40);
+   //parallelogram
+   line(250,300,450,300);
+   line(450,300,400,400);
+   line(400,400,200,400);
+   line(200,400,250,300);
+   //right triangle
+   line(500,300,550,400);
+   line(550,400,500,400);
+   line(500,400,500,300);
+
+   getch();
+   closegraph();
+   return 0;
+}
